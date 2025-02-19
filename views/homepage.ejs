@@ -1,28 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>E28886</title>
-    <link rel="stylesheet" href="/style.css" />
-  </head>
+  <!-- EJS Include -->
+  <%- include('includes/head') %>
   <body>
-    <header>
-      <h1>E28886.tech</h1>
-      <a href="/home">Home</a>
-      <a href="/login">Login</a>
-    </header>
+    <%- include('includes/header') %>
 
     <main>
-      <h1>Weclome to E28886</h1>
-      <p>This application lets you publish research papers online for free.</p>
+      <h1>Welcome to e28886.</h1>
+      <p>Create a new account to access the platform.</p>
+
+      <% if(errors.length > 0) { %>
+      <p><mark>Errors:</mark></p>
+      <ul>
+        <% errors.forEach((error) => { %>
+        <li><%= error %></li>
+        <% }) %>
+      </ul>
+      <% } %>
+
+      <form action="/register" method="POST">
+        <fieldset>
+          <legend>Sign Up</legend>
+
+          <label for="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            autocomplete="off"
+            required
+          />
+
+          <br />
+
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" required />
+
+          <br />
+
+          <button type="submit">Sign Up</button>
+        </fieldset>
+      </form>
     </main>
 
-    <footer>
-      <p>
-        Copyright &copy;
-        <a href="https://wakati.tech" target="_blank">Wakati</a>
-      </p>
-    </footer>
+    <%- include('includes/footer') %>
   </body>
 </html>
